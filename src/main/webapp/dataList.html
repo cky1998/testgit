@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/bootstrap.css" />
+	</head>
+	<body>
+		
+		<h2 style="text-align: center;">学生信息数据列表</h2>
+		<div style="margin: 20px 10px 10px 10px;">
+			<div style="display: flex; align-items: center;justify-content: space-between;">
+				<div>
+					<button onclick="deleteAll()" class='btn btn-warning btn-sm'>
+					<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+					批量删除</button>
+					<button type="button" class='btn btn-success btn-sm' data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
+						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+						添加
+					</button>							
+				</div>
+				<form class="form-inline" style="margin: 10px;">
+				  <div class="form-group">
+				    <label for="exampleInputName1">姓名</label>
+				    <input type="text" class="form-control" placeholder="name" id="exampleInputName1">
+				  </div>
+				  <div class="form-group">
+				    <label for="exampleInputName2">年龄</label>
+				    <input type="text" class="form-control" placeholder="age" id="exampleInputName2">
+				  </div>
+				  <div class="form-group">
+				    <label for="exampleInputEmail2">邮箱</label>
+				    <input type="email" class="form-control" placeholder="email" id="exampleInputEmail2">
+				  </div>
+				  <div class="form-group">
+				  	<label style="width: 30px;"></label>
+				  </div>
+				  <button type="submit" class="btn btn-success">
+				  	<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+				  	查询
+				  </button>
+				</form>
+				
+			</div>
+			<table class="table table-bordered table-hover">
+				<thead>
+					<tr class="info">
+						<th><input class="form-control" type="checkbox" /> </th>
+						<th>序号</th>
+						<th>姓名</th>
+						<th>年龄</th>
+						<th>生日</th>
+						<th>邮箱</th>
+						<th>简介</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody id="tataBody"></tbody>
+			</table>
+			
+			<!--
+            	作者：offline
+            	时间：2019-09-21
+            	描述：表格底部的分页导航条
+            -->
+			<nav aria-label="page navigation">
+				<ul class="pagination" style="margin: 0;">
+				    <li>
+				      <a href="#" aria-label="Previous">
+				        <span aria-hidden="true">&laquo;</span>
+				      </a>
+				    </li>
+				    <li><a href="#">1</a></li>
+				    <li><a href="#">2</a></li>
+				    <li><a href="#">3</a></li>
+				    <li><a href="#">4</a></li>
+				    <li><a href="#">5</a></li>
+				    <li>
+				      <a href="#" aria-label="Next">
+				        <span aria-hidden="true">&raquo;</span>
+				      </a>
+				    </li>
+				</ul>
+				<label style="font-size: 25px; vertical-align: top; margin-left: 10px;">共5页     48条数据</label>
+			</nav>
+		</div>
+		
+		<!--
+        	作者：offline
+        	时间：2019-09-21
+        	描述：添加学生信息的模态窗口
+        -->
+		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title" id="exampleModalLabel">添加学生信息</h4>
+		      </div>
+		      <div class="modal-body">
+		        <form action="" class="addForm" id="addForm">
+		          <div class="form-group">
+		            <label for="name" class="control-label">姓名</label>
+		            <div style="width: 240px;">
+		            	<input type="text" class="form-control" name="name" id="name" placeholder="请输入姓名" required />
+		            </div>
+		          </div>
+		          <div class="form-group">
+		            <label for="age" class="control-label">年龄</label>
+					<div style="width: 240px;">
+		            	<input type="text" class="form-control" name="age" id="age" placeholder="请输入年龄" required />
+		            </div>
+		          </div>
+		          <div class="form-group">
+		            <label for="birthday" class="control-label">生日</label>
+		            <div style="width: 240px;">
+		            	<input type="date" class="form-control" name="birthday" id="birthday" placeholder="请输入生日" required />
+		            </div>
+		          </div>
+		          <div class="form-group">
+		            <label for="email" class="control-label">邮箱</label>
+		            <div style="width: 240px;">
+		            	<input type="email" class="form-control" name="email" id="email" placeholder="请输入邮箱" required />
+		            </div>
+		          </div>
+		          <div class="form-group">
+		            <label class="control-label">自我介绍</label>
+		            <textarea class="form-control" name="info" >这个人很懒，什么都没有说！</textarea>
+		          </div>
+		        </form>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+		        <!--因为当前button提交按钮在form标签外部，需要使用form属性对form标签进行关联-->
+		        <button type="submit" form="addForm" class="btn btn-primary">确认添加</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		
+		<script type="text/javascript" src="js/jquery-1.12.4.min.js" ></script>
+		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
+		<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+		<script>
+			$(function (){
+				new Vue({
+
+				})
+			})
+		</script>
+	</body>
+</html>
