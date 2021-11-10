@@ -1,17 +1,12 @@
 package com.demo.pojo;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-/**
- * @Program: Day07-Goods-maven
- * @ClassName: Student
- * @Author: *****
- * @Copyright ****个人所有
- * @Date: 2021-11-09 15:27
- * @Description: ${创建类时填写描述信息}
- * @Version: V1.0
- */
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Student {
     private int id;
     private String name;
